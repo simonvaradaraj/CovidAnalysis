@@ -5,7 +5,7 @@ from matplotlib import dates
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-from datetime import datetime
+import datetime
 
 # Data gathered from https://dshs.texas.gov/coronavirus/AdditionalData.aspx 
 # TEXAS DEPARTMENT OF STATE HEALTH SERVICES - Last Updated July 23rd 2022
@@ -22,39 +22,23 @@ fig, axes = plt.subplots(nrows=1, ncols=2)
 del vaccsheets['By Vaccination Date']['People with at least One Booster Dose']
 
 # formatting the dates in the excel sheet to pandas datetime values
-print(vaccsheets['By Vaccination Date']['Vaccination Date'])
-
 vaccsheets['By Vaccination Date']['Vaccination Date'] = pd.to_datetime(vaccsheets['By Vaccination Date']['Vaccination Date'], format='%Y-%m-%d %H:%M:%S.%f')
 vaccsheets['By Vaccination Date']['Doses Administered'] /= 1000
 
 # FORMATTING THE COVID CASE SHEET
 
 # creating a list of all the covid cases in 2020-2022
-cases2020 = np.array(covidsheets['New Cases by County 2020'].iloc[257][-18:-2])
-# syncing up the dates on the vaccination sheet (since that only starts at December 14, 2020)
-dates2020 = np.array(covidsheets['New Cases by County 2020'].iloc[1][-18:-2])
-
+cases2020 = np.array(covidsheets['New Cases by County 2020'].iloc[257][-19:-2])
 cases2021 = np.array(covidsheets['New Cases by County 2021'].iloc[257][1:])
-dates2021 = np.array(covidsheets['New Cases by County 2021'].iloc[1][1:])
-
 cases2022 = np.array(covidsheets['New Cases by County 2022'].iloc[257][1:])
-# for some reason, this is not being comprehended as the correct datetime unit
-dates2022 = (np.array(covidsheets['New Cases by County 2022'].iloc[1][1:]))
-
-properdates = []
-# converting to the proper datetime unit
-for date in dates2022:
-    properdates.append(datetime.strptime(date, '%m/%d/%Y'))
-
-dates2022 = np.asarray(properdates)
 
 allcases = np.concatenate((cases2020, cases2021, cases2022), axis = None) / 1000
-alldates = np.concatenate((dates2020, dates2021, dates2022), axis = None)
 
-print(alldates)
+print(vaccsheets['By Vaccination Date']['Vaccination Date'])
+print(allcases[0])
 
 # creating a dataframe of the dates and cases
-covidframe = pd.DataFrame({'Dates':alldates, 'Cases':allcases})
+covidframe = pd.DataFrame({'Dates': vaccsheets['By Vaccination Date']['Vaccination Date'], 'Cases':allcases})
 covidframe.plot(x = 'Dates', y = ["Cases"], ax= axes[0], color = "#FFAAA6")
 axes[0].set_ylabel("Cases in thousands")
 axes[0].set_xlabel("Contraction Date")
