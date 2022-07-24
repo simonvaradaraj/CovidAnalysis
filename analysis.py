@@ -45,18 +45,23 @@ covidframe = pd.DataFrame({'Dates': vaccsheets['By Vaccination Date']['Vaccinati
 covidframe.plot(x = 'Dates', y = ["Cases"], ax= axes[0, 0], color = "#FFAAA6")
 axes[0, 0].set_ylabel("Cases in thousands")
 axes[0, 0].set_xlabel("Contraction Date")
+axes[0, 0].set_title("COVID-19 Cases in Texas")
 
 # plotting partially vaccinated doses over time
 vaccsheets['By Vaccination Date'].plot(x = "Vaccination Date", y = ["People Vaccinated with at least One Dose"], ax=axes[0, 1])
 axes[0, 1].set_ylabel("Single Vaccinated people in thousands")
 axes[0, 1].set_xlabel("Vaccination Date")
+axes[0, 0].set_title("COVID-19 Single Vaccinations in Texas")
 
 # plotting Fully vaccinated people over time
 vaccsheets['By Vaccination Date'].plot(x = "Vaccination Date", y = ["People Fully Vaccinated "], ax=axes[1, 0], color = '#009b77')
 axes[1, 0].set_ylabel("Fully Vaccinated people in thousands")
 axes[1, 0].set_xlabel("Vaccination Date")
+axes[0, 0].set_title("COVID-19 Full Vaccinations in Texas")
 
 
+
+# definitely can make this a lot cleaner
 axes[0, 0].set_xlim([datetime.date(2020, 12, 14), datetime.date(2022, 7, 22)])
 axes[0, 1].set_xlim([datetime.date(2020, 12, 14), datetime.date(2022, 7, 22)])
 axes[1, 0].set_xlim([datetime.date(2020, 12, 14), datetime.date(2022, 7, 22)])
