@@ -20,8 +20,25 @@ del vaccsheets['By Vaccination Date']['People with at least One Booster Dose']
 vaccsheets['By Vaccination Date']['Vaccination Date'] = pd.to_datetime(vaccsheets['By Vaccination Date']['Vaccination Date'], format='%Y-%m-%d %H:%M:%S.%f')
 vaccsheets['By Vaccination Date']['Doses Administered'] /= 1000
 
+# FORMATTING THE COVID CASE SHEET
+
+# creating a list of all the covid cases in 2020-2022
+cases2020 = np.array(covidsheets['New Cases by County 2020'].iloc[257][1:-2])
+dates2020 = np.array(covidsheets['New Cases by County 2020'].iloc[1][1:-2])
+
+cases2021 = np.array(covidsheets['New Cases by County 2021'].iloc[257][1:])
+dates2021 = np.array(covidsheets['New Cases by County 2021'].iloc[1][1:])
+
+cases2022 = np.array(covidsheets['New Cases by County 2022'].iloc[257][1:])
+dates2022 = np.array(covidsheets['New Cases by County 2022'].iloc[1][1:])
+
+allcases = np.concatenate((cases2020, cases2021, cases2022), axis = None)
+alldates = np.concatenate((dates2020, dates2021, dates2022), axis = None)
+
+print(alldates[0], alldates[-1])
+
 # plotting Vaccine doses over time
 vaccsheets['By Vaccination Date'].plot(x = "Vaccination Date", y = ["Doses Administered"])
 plt.ylabel("Doses Administered in thousands")
 
-plt.show()
+# plt.show()
