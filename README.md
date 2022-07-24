@@ -1,4 +1,4 @@
-# Covid Analysis
+# Texas Covid Analysis
 This is an excercise in data retreival and visalization using *pandas*, *matplotlib*, and *numpy*. The gata that is to be analysed is the 
 offical vaccination and transmission data of COVID-19 in Texas starting from March 6th 2020 to July 23rd 2022. 
 
