@@ -14,7 +14,7 @@ import datetime
 vaccsheets = pd.read_excel("COV19-vaccine-data-by-county.xlsx", sheet_name=None)
 covidsheets = pd.read_excel("texasnewcases.xlsx", sheet_name=None)
 
-fig, axes = plt.subplots(nrows=2, ncols=2)
+fig, axes = plt.subplots(nrows=1, ncols=3)
 
 # FORMATTING THE VACCINATION SHEET
 
@@ -41,29 +41,29 @@ allcases = np.concatenate((cases2020, cases2021, cases2022), axis = None) / 1000
 
 
 # creating a dataframe of the dates and cases
-covidframe = pd.DataFrame({'Dates': vaccsheets['By Vaccination Date']['Vaccination Date'], 'Cases':allcases})
-covidframe.plot(x = 'Dates', y = ["Cases"], ax= axes[0, 0], color = "#FFAAA6")
-axes[0, 0].set_ylabel("Cases in thousands")
-axes[0, 0].set_xlabel("Contraction Date")
-axes[0, 0].set_title("COVID-19 Cases in Texas")
+covidframe = pd.DataFrame({'': vaccsheets['By Vaccination Date']['Vaccination Date'], 'Cases':allcases})
+covidframe.plot(x = '', y = ["Cases"], ax= axes[0], color = "#FFAAA6")
+axes[0].set_ylabel("Cases in thousands")
+# gets rid of annoying label
+axes[0].set_xlabel("")
+axes[0].set_title("COVID-19 Cases in Texas")
 
 # plotting partially vaccinated doses over time
-vaccsheets['By Vaccination Date'].plot(x = "Vaccination Date", y = ["People Vaccinated with at least One Dose"], ax=axes[0, 1])
-axes[0, 1].set_ylabel("Single Vaccinated people in thousands")
-axes[0, 1].set_xlabel("Vaccination Date")
-axes[0, 1].set_title("COVID-19 Single Vaccinations in Texas")
+vaccsheets['By Vaccination Date'].plot(x = "Vaccination Date", y = ["People Vaccinated with at least One Dose"], ax=axes[1])
+axes[1].set_ylabel("Single Vaccinated people in thousands")
+axes[1].set_xlabel("")
+axes[1].set_title("COVID-19 Single Vaccinations in Texas")
 
 # plotting Fully vaccinated people over time
-vaccsheets['By Vaccination Date'].plot(x = "Vaccination Date", y = ["People Fully Vaccinated "], ax=axes[1, 0], color = '#009b77')
-axes[1, 0].set_ylabel("Fully Vaccinated people in thousands")
-axes[1, 0].set_xlabel("Vaccination Date")
-axes[1, 0].set_title("COVID-19 Full Vaccinations in Texas")
+vaccsheets['By Vaccination Date'].plot(x = "Vaccination Date", y = ["People Fully Vaccinated "], ax=axes[2], color = '#009b77')
+axes[2].set_ylabel("Fully Vaccinated people in thousands")
+axes[2].set_title("COVID-19 Full Vaccinations in Texas")
 
 
 
 # definitely can make this a lot cleaner
-axes[0, 0].set_xlim([datetime.date(2020, 12, 14), datetime.date(2022, 7, 22)])
-axes[0, 1].set_xlim([datetime.date(2020, 12, 14), datetime.date(2022, 7, 22)])
-axes[1, 0].set_xlim([datetime.date(2020, 12, 14), datetime.date(2022, 7, 22)])
+axes[0].set_xlim([datetime.date(2020, 12, 14), datetime.date(2022, 7, 22)])
+axes[1].set_xlim([datetime.date(2020, 12, 14), datetime.date(2022, 7, 22)])
+axes[2].set_xlim([datetime.date(2020, 12, 14), datetime.date(2022, 7, 22)])
 
 plt.show()
