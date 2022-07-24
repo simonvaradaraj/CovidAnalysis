@@ -1,7 +1,4 @@
-# Visulatizing the Growth in Covid 19 Cases in Texas, and it to the growth of Monkeypox
-
-from turtle import color
-from matplotlib import dates
+# Visualizing the Growth in Covid 19 Cases in Texas
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
