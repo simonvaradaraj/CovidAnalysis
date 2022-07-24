@@ -14,3 +14,5 @@ After using `pd.read_excel()`, I would use various pandas methods to crop and sn
 ## Covid Cases and Vaccinations over Time
 ![Graph](./Time_graphs.png)
 
+---
+Written and coded with ❤ by Simon Varadaraj
