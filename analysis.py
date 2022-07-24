@@ -37,6 +37,9 @@ allcases = np.concatenate((cases2020, cases2021, cases2022), axis = None) / 1000
 print(vaccsheets['By Vaccination Date']['Vaccination Date'])
 print(allcases[0])
 
+# One can use the same data for time, since graphs are both over the same timeframe
+
+
 # creating a dataframe of the dates and cases
 covidframe = pd.DataFrame({'Dates': vaccsheets['By Vaccination Date']['Vaccination Date'], 'Cases':allcases})
 covidframe.plot(x = 'Dates', y = ["Cases"], ax= axes[0], color = "#FFAAA6")
