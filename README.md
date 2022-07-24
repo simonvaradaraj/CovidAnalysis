@@ -9,3 +9,8 @@ All data used in the creation of this project comes directly from the Texas Depa
 The main logic behind the project is using `pd.read_excel("example_sheetname.xlsx", sheet_name = None)` to create a dictionary of all the sheets in a given excel file. For example, <span style = 'color: green'>texasnewcases.xlsx</span> has *three* separate sheets dividing the covid cases by year, so in order to easily find and collect all the sheet data, this method worked quite well.
 
 After using `pd.read_excel()`, I would use various pandas methods to crop and snip away at unwanted data and plotted all the neccessary data as line graphs over time using Matplotlib.
+
+---
+## Covid Cases and Vaccinations over Time
+![Graph](./Time_graphs.png)
+
