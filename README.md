@@ -15,4 +15,7 @@ After using `pd.read_excel()`, I would use various pandas methods to crop and sn
 ![Graph](./Time_graphs.png)
 
 ---
+## Population vs. Vaccination Rates over Age
+![Pie Charts](./pie_graphs.png)
+
 Written and coded with ❤ by Simon Varadaraj
