@@ -51,13 +51,13 @@ axes[0, 0].set_title("COVID-19 Cases in Texas")
 vaccsheets['By Vaccination Date'].plot(x = "Vaccination Date", y = ["People Vaccinated with at least One Dose"], ax=axes[0, 1])
 axes[0, 1].set_ylabel("Single Vaccinated people in thousands")
 axes[0, 1].set_xlabel("Vaccination Date")
-axes[0, 0].set_title("COVID-19 Single Vaccinations in Texas")
+axes[0, 1].set_title("COVID-19 Single Vaccinations in Texas")
 
 # plotting Fully vaccinated people over time
 vaccsheets['By Vaccination Date'].plot(x = "Vaccination Date", y = ["People Fully Vaccinated "], ax=axes[1, 0], color = '#009b77')
 axes[1, 0].set_ylabel("Fully Vaccinated people in thousands")
 axes[1, 0].set_xlabel("Vaccination Date")
-axes[0, 0].set_title("COVID-19 Full Vaccinations in Texas")
+axes[1, 0].set_title("COVID-19 Full Vaccinations in Texas")
 
 
 
